@@ -15,7 +15,7 @@ function App() {
     setError(null)
     setResult(null)
     try {
-      const res = await fetch('/api/shorten', {
+      const res = await fetch('https://url-shortener-production-cbe8.up.railway.app/api/shorten', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url, expiryDays })
@@ -40,7 +40,7 @@ function App() {
     setStats(null)
     setError(null)
     try {
-      const res = await fetch('/api/stats/' + statsCode)
+      const res = await fetch('https://url-shortener-production-cbe8.up.railway.app/api/stats/' + statsCode)
       if (!res.ok) throw new Error('Short code not found')
       const data = await res.json()
       setStats(data)
