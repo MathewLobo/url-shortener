@@ -16,7 +16,7 @@ public class UrlResponse {
 
     public UrlResponse(Url url) {
         this.shortCode = url.getShortCode();
-        this.shortUrl = "http://localhost:8080/" + url.getShortCode();
+        this.shortUrl = System.getenv().getOrDefault("APP_BASE_URL", "http://localhost:8080") + "/" + url.getShortCode();
         this.originalUrl = url.getOriginalUrl();
         this.clickCount = url.getClickCount();
         this.createdAt = url.getCreatedAt();
