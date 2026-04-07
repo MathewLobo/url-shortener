@@ -14,9 +14,9 @@ public class UrlResponse {
     private LocalDateTime createdAt;
     private LocalDateTime expiresAt;
 
-    public UrlResponse(Url url) {
+    public UrlResponse(Url url, String baseUrl) {
         this.shortCode = url.getShortCode();
-        this.shortUrl = System.getenv().getOrDefault("APP_BASE_URL", "http://localhost:8080") + "/" + url.getShortCode();
+        this.shortUrl = baseUrl + "/" + url.getShortCode();
         this.originalUrl = url.getOriginalUrl();
         this.clickCount = url.getClickCount();
         this.createdAt = url.getCreatedAt();

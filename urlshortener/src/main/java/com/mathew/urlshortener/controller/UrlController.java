@@ -5,14 +5,18 @@ import com.mathew.urlshortener.dto.UrlResponse;
 import com.mathew.urlshortener.model.Url;
 import com.mathew.urlshortener.service.UrlService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class UrlController {
 
     private final UrlService urlService;
+
+    @Value("${app.base-url:http://localhost:8080}")
+    private String baseUrl;
 
     public UrlController(UrlService urlService) {
         this.urlService = urlService;
@@ -22,7 +26,7 @@ public class UrlController {
     public ResponseEntity<UrlResponse> shorten(
             @RequestBody @Valid ShortenRequest req) {
         Url url = urlService.shortenUrl(req);
-        return ResponseEntity.ok(new UrlResponse(url));
+        return ResponseEntity.ok(new UrlResponse(url, baseUrl));
     }
 
     @GetMapping("/{shortCode}")
@@ -37,7 +41,7 @@ public class UrlController {
     public ResponseEntity<UrlResponse> stats(
             @PathVariable String shortCode) {
         Url url = urlService.getStats(shortCode);
-        return ResponseEntity.ok(new UrlResponse(url));
+        return ResponseEntity.ok(new UrlResponse(url, baseUrl));
     }
 
     @DeleteMapping("/api/urls/{shortCode}")
