@@ -14,9 +14,7 @@ public class UrlController {
 
     private final UrlService urlService;
 
-    private String baseUrl = System.getenv("APP_BASE_URL") != null 
-        ? System.getenv("APP_BASE_URL") 
-        : "http://localhost:8080";
+    private String baseUrl = "https://url-shortener-production-cbe8.up.railway.app";
 
     public UrlController(UrlService urlService) {
         this.urlService = urlService;
