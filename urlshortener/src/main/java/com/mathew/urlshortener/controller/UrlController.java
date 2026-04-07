@@ -5,7 +5,6 @@ import com.mathew.urlshortener.dto.UrlResponse;
 import com.mathew.urlshortener.model.Url;
 import com.mathew.urlshortener.service.UrlService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +14,9 @@ public class UrlController {
 
     private final UrlService urlService;
 
-    @Value("${app.base-url:http://localhost:8080}")
-    private String baseUrl;
+    private String baseUrl = System.getenv("APP_BASE_URL") != null 
+        ? System.getenv("APP_BASE_URL") 
+        : "http://localhost:8080";
 
     public UrlController(UrlService urlService) {
         this.urlService = urlService;
