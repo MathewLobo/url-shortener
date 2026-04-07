@@ -15,7 +15,7 @@ public class UrlController {
 
     private final UrlService urlService;
 
-    @Value("${app.base-url:http://localhost:8080}")
+    @Value("${APP_BASE_URL:http://localhost:8080}")
     private String baseUrl;
 
     public UrlController(UrlService urlService) {
