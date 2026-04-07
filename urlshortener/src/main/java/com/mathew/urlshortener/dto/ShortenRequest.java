@@ -9,8 +9,8 @@ public class ShortenRequest {
 
     @NotBlank(message = "URL cannot be blank")
     @Pattern(
-        regexp = "^(https?://).*",
-        message = "URL must start with http:// or https://"
+        regexp = "^(https?://)[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]",
+        message = "Please enter a valid URL starting with http:// or https://"
     )
     private String url;
 
