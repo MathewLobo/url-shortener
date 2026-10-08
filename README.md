@@ -2,7 +2,7 @@
 
 A full-stack URL shortening service built with Spring Boot and React.
 
-🔗 **Live Demo:** https://url-shortener-sigma-lovat.vercel.app
+Demo currently offline; run locally using the steps below.
 
 ## Features
 - Shorten any URL instantly
